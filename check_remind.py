@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
-WECOM_WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=0fa74ba0-501d-429f-b552-93cca22ea535"
+WECOM_WEBHOOK = os.environ.get("WECOM_WEBHOOK", "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=0fa74ba0-501d-429f-b552-93cca22ea535")
 TASKS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tasks.json")
 BEIJING_TZ = timezone(timedelta(hours=8))
 

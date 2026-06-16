@@ -1,0 +1,29 @@
+name: 看板预约提醒
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # 每 5 分钟一次
+  workflow_dispatch:          # 手动触发
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 检查预约到期并推送企业微信
+        env:
+          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        run: python check_remind.py
+
+      - name: 提交通知记录
+        if: success()
+        run: |
+          git config user.name "kanban-bot"
+          git config user.email "bot@kanban.local"
+          git add tasks.json
+          git diff --staged --quiet || (git commit -m "chore: 更新通知记录" && git push)
