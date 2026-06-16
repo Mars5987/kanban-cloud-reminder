@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: kanban-cloud-reminder
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "3000"
+      - key: WECOM_WEBHOOK
+        value: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=0fa74ba0-501d-429f-b552-93cca22ea535"

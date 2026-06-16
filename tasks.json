@@ -1,0 +1,11 @@
+{
+  "tasks": {
+    "todo": [],
+    "doing": [],
+    "done": []
+  },
+  "nextId": 1,
+  "nextSeq": 0,
+  "notified": [],
+  "savedAt": "2026-06-16T14:30:00+08:00"
+}

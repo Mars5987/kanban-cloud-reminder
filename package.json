@@ -1,0 +1,12 @@
+{
+  "name": "kanban-cloud-reminder",
+  "version": "1.0.0",
+  "description": "看板云端预约提醒服务 - 电脑关机也能发企业微信通知",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
